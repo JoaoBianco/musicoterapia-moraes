@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function NavBarItems({
   customClass,
@@ -16,66 +17,63 @@ export default function NavBarItems({
     }
   }
 
+  const menuItens = [
+    {
+      label: "Home",
+      href: "#",
+    },
+    {
+      label: "Musicoterapia",
+      href: "#",
+    },
+    {
+      label: "Quines Somos",
+      href: "#",
+    },
+    {
+      label: "Servicios",
+      href: "#",
+    },
+    {
+      label: "Asociados",
+      href: "#",
+    },
+    {
+      label: "Opiniones",
+      href: "#",
+    },
+    {
+      label: "Localización",
+      href: "#",
+    },
+    {
+      label: "Contacto",
+      href: "#",
+    },
+  ];
+
   return (
-    <div
+    <motion.div
       className={`ml-auto flex gap-4 text-sm [&>*]:transition-colors ${customClass}`}
     >
-      <Link
-        className="hover:text-custom-blue-500"
-        onClick={() => closeMenu()}
-        href="#"
-      >
-        Home
-      </Link>
-      <Link
-        className="hover:text-custom-blue-500"
-        onClick={() => closeMenu()}
-        href="#"
-      >
-        Musicoterapia
-      </Link>
-      <Link
-        className="hover:text-custom-blue-500"
-        onClick={() => closeMenu()}
-        href="#"
-      >
-        Quines Somos
-      </Link>
-      <Link
-        className="hover:text-custom-blue-500"
-        onClick={() => closeMenu()}
-        href="#"
-      >
-        Servicios
-      </Link>
-      <Link
-        className="hover:text-custom-blue-500"
-        onClick={() => closeMenu()}
-        href="#"
-      >
-        Asociados
-      </Link>
-      <Link
-        className="hover:text-custom-blue-500"
-        onClick={() => closeMenu()}
-        href="#"
-      >
-        Opiniones
-      </Link>
-      <Link
-        className="hover:text-custom-blue-500"
-        onClick={() => closeMenu()}
-        href="#"
-      >
-        Localización
-      </Link>
-      <Link
-        className="hover:text-custom-blue-500"
-        onClick={() => closeMenu()}
-        href="#"
-      >
-        Contacto
-      </Link>
-    </div>
+      {menuItens.map((item, index) => {
+        return (
+          <motion.span
+            key={index}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 0.2 * index } }}
+            exit={{ opacity: 0 }}
+          >
+            <Link
+              className="hover:text-custom-blue-500 transition-colors"
+              onClick={() => closeMenu()}
+              href={item.href}
+            >
+              {item.label}
+            </Link>
+          </motion.span>
+        );
+      })}
+    </motion.div>
   );
 }

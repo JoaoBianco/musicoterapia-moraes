@@ -6,6 +6,7 @@ import NavBarItems from "./NavBarItems";
 import NavBarMobile from "./NavBarMobile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { AnimatePresence } from "framer-motion";
 
 export default function NavBar() {
   const [isMobile, setIsMobile] = useState(false);
@@ -44,11 +45,13 @@ export default function NavBar() {
             icon={faBars}
           />
         ) : null}
-        {!isMobile ? (
-          <NavBarItems />
-        ) : isOpen ? (
-          <NavBarMobile isOpen={isOpen} setIsOpen={setIsOpen} />
-        ) : null}
+        <AnimatePresence>
+          {!isMobile ? (
+            <NavBarItems />
+          ) : isOpen ? (
+            <NavBarMobile isOpen={isOpen} setIsOpen={setIsOpen} />
+          ) : null}
+        </AnimatePresence>
       </Wrapper>
     </nav>
   );

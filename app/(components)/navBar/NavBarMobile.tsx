@@ -4,6 +4,7 @@ import React from "react";
 import NavBarItems from "./NavBarItems";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
 
 export default function NavBarMobile({
   isOpen,
@@ -13,7 +14,12 @@ export default function NavBarMobile({
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   return (
-    <div className="inset-0 bg-white z-10 absolute">
+    <motion.div
+      initial={{ y: "-100%" }}
+      animate={{ y: 0 }}
+      exit={{ y: "-100%" }}
+      className="inset-0 bg-white z-10 absolute"
+    >
       {isOpen ? (
         <FontAwesomeIcon
           onClick={() => setIsOpen(false)}
@@ -25,6 +31,6 @@ export default function NavBarMobile({
         setIsOpen={setIsOpen}
         customClass="h-full text-lg flex-col items-center justify-center"
       />
-    </div>
+    </motion.div>
   );
 }
