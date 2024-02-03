@@ -19,6 +19,7 @@ const config: Config = {
         "custom-blue-500": "#2B7D92",
         "custom-red-400": "#C42F1B",
         "custom-red-500": "#980903",
+        "white-snow": "#fffafa",
       },
     },
   },

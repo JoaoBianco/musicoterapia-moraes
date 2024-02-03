@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
+import { showItems } from "@/app/(framer-motion)/navBar";
 
 export default function NavBarItems({
   customClass,
@@ -60,9 +61,10 @@ export default function NavBarItems({
         return (
           <motion.span
             key={index}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { duration: 0.2 * index } }}
-            exit={{ opacity: 0 }}
+            variants={showItems(index)}
+            initial={showItems(index).hidden}
+            animate={showItems(index).visible}
+            exit={showItems(index).hidden}
           >
             <Link
               className="hover:text-custom-blue-500 transition-colors"

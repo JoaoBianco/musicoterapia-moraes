@@ -5,6 +5,7 @@ import NavBarItems from "./NavBarItems";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+import { showNav } from "@/app/(framer-motion)/navBar";
 
 export default function NavBarMobile({
   isOpen,
@@ -15,9 +16,10 @@ export default function NavBarMobile({
 }) {
   return (
     <motion.div
-      initial={{ y: "-100%" }}
-      animate={{ y: 0 }}
-      exit={{ y: "-100%" }}
+      variants={showNav}
+      initial={showNav.hidden}
+      animate={showNav.visible}
+      exit={showNav.hidden}
       className="inset-0 bg-white z-10 absolute"
     >
       {isOpen ? (

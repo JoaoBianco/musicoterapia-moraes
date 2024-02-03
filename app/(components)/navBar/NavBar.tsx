@@ -6,7 +6,8 @@ import NavBarItems from "./NavBarItems";
 import NavBarMobile from "./NavBarMobile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { showItems } from "@/app/(framer-motion)/navBar";
 
 export default function NavBar() {
   const [isMobile, setIsMobile] = useState(false);
@@ -31,13 +32,21 @@ export default function NavBar() {
     return () => window.removeEventListener("resize", verifyWidth);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+  }, [isOpen]);
+
   return (
     <nav className="shadow-md font-medium ">
       <Wrapper customClass="flex py-3 items-center">
-        <h2>
+        <motion.h2
+          variants={showItems()}
+          initial={showItems().hiddenFromLeft}
+          animate={showItems().visibleFromLeft}
+        >
           <span className="text-custom-red-500">M</span>usicoterapia{" "}
           <span className="text-custom-blue-500">M</span>oraes
-        </h2>
+        </motion.h2>
         {isMobile ? (
           <FontAwesomeIcon
             className="ml-auto cursor-pointer hover:text-custom-blue-500"
@@ -45,13 +54,11 @@ export default function NavBar() {
             icon={faBars}
           />
         ) : null}
-        <AnimatePresence>
-          {!isMobile ? (
-            <NavBarItems />
-          ) : isOpen ? (
-            <NavBarMobile isOpen={isOpen} setIsOpen={setIsOpen} />
-          ) : null}
-        </AnimatePresence>
+        {!isMobile ? (
+          <NavBarItems />
+        ) : isOpen ? (
+          <NavBarMobile isOpen={isOpen} setIsOpen={setIsOpen} />
+        ) : null}
       </Wrapper>
     </nav>
   );
