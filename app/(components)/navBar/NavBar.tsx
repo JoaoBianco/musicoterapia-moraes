@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import Wrapper from "../Wrapper";
 import NavBarItems from "./NavBarItems";
 import NavBarMobile from "./NavBarMobile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { showItems } from "@/app/(framer-motion)/navBar";
 
 export default function NavBar() {
@@ -39,14 +40,24 @@ export default function NavBar() {
   return (
     <nav className="shadow-md font-medium ">
       <Wrapper customClass="flex py-3 items-center">
-        <motion.h2
-          variants={showItems()}
-          initial={showItems().hiddenFromLeft}
-          animate={showItems().visibleFromLeft}
-        >
-          <span className="text-custom-red-500">M</span>usicoterapia{" "}
-          <span className="text-custom-blue-500">M</span>oraes
-        </motion.h2>
+        {!isMobile ? (
+          <motion.h2
+            variants={showItems()}
+            initial={showItems().hiddenFromLeft}
+            animate={showItems().visibleFromLeft}
+          >
+            <span className="text-custom-red-500">M</span>usicoterapia{" "}
+            <span className="text-custom-blue-500">M</span>oraes
+          </motion.h2>
+        ) : (
+          <Image
+            src={"/assets/imgLogo.png"}
+            alt="Musicoterapia Moraes"
+            width={36}
+            height={36}
+          />
+        )}
+
         {isMobile ? (
           <FontAwesomeIcon
             className="ml-auto cursor-pointer hover:text-custom-blue-500"

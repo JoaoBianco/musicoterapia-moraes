@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { showNav } from "@/app/(framer-motion)/navBar";
+import Image from "next/image";
 
 export default function NavBarMobile({
   isOpen,
@@ -29,6 +30,13 @@ export default function NavBarMobile({
           className="absolute right-10 top-10 cursor-pointer hover:text-custom-blue-500"
         />
       ) : null}
+      <Image
+        src={"/assets/mm_logo.png"}
+        alt="Musicoterapia Moraes"
+        width={144}
+        height={144}
+        className="absolute top-10 left-1/2 transform -translate-x-1/2"
+      />
       <NavBarItems
         setIsOpen={setIsOpen}
         customClass="h-full text-lg flex-col items-center justify-center"
