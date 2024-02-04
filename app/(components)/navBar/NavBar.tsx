@@ -38,7 +38,11 @@ export default function NavBar() {
   }, [isOpen]);
 
   return (
-    <nav className="shadow-md font-medium ">
+    <nav
+      className={`shadow-md font-medium sticky top-0 bg-white w-full ${
+        isMobile && isOpen ? "h-screen" : ""
+      }`}
+    >
       <Wrapper customClass="flex py-3 items-center">
         {!isMobile ? (
           <motion.h2

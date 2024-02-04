@@ -21,7 +21,7 @@ export default function NavBarMobile({
       initial={showNav.hidden}
       animate={showNav.visible}
       exit={showNav.hidden}
-      className="inset-0 bg-white z-10 absolute"
+      className="inset-0 z-100 bg-white absolute"
     >
       {isOpen ? (
         <FontAwesomeIcon
