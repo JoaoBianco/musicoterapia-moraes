@@ -22,6 +22,9 @@ const config: Config = {
         "white-snow": "#fffafa",
       },
     },
+    boxShadow: {
+      "box-shadow-card": "inset 4px 4px 10px #545454",
+    },
   },
   plugins: [],
 };

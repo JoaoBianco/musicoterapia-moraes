@@ -1,8 +1,9 @@
-import Banner from "./(components)/Banner";
-import Button from "./(components)/Button";
+import Banner from "./(components)/shared/Banner";
+import Button from "./(components)/shared/Button";
 import Hero from "./(components)/hero/Hero";
 import Musicoterapia from "./(components)/musicoterapia/Musicoterapia";
 import NavBar from "./(components)/navBar/NavBar";
+import Introduction from "./(components)/introduction/Introduction";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <Button size="small" text="Averígualo" />
       </Banner>
       <Musicoterapia />
+      <Introduction />
     </>
   );
 }

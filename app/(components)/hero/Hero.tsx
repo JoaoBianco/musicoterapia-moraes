@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import Wrapper from "../Wrapper";
-import Separator from "../Separator";
+import Wrapper from "../shared/Wrapper";
+import Separator from "../shared/Separator";
 
 export default function Hero() {
   return (

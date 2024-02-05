@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Wrapper from "../Wrapper";
+import Wrapper from "../shared/Wrapper";
 import NavBarItems from "./NavBarItems";
 import NavBarMobile from "./NavBarMobile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

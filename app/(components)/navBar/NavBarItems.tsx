@@ -25,31 +25,31 @@ export default function NavBarItems({
     },
     {
       label: "Musicoterapia",
-      href: "#",
+      href: "#musicoterapia",
     },
     {
-      label: "Quines Somos",
-      href: "#",
+      label: "Queines Somos",
+      href: "#quienes-somos",
     },
     {
       label: "Servicios",
-      href: "#",
+      href: "#servicios",
     },
     {
       label: "Asociados",
-      href: "#",
+      href: "#asociados",
     },
     {
       label: "Opiniones",
-      href: "#",
+      href: "#opiniones",
     },
     {
       label: "Localización",
-      href: "#",
+      href: "#localizacion",
     },
     {
       label: "Contacto",
-      href: "#",
+      href: "#contacto",
     },
   ];
 

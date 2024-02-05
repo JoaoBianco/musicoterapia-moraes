@@ -4,7 +4,7 @@ import { faAnglesDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { motion } from "framer-motion";
-import { arrowAnim } from "../(framer-motion)/arrowAnim";
+import { arrowAnim } from "../../(framer-motion)/arrowAnim";
 
 export default function Separator({ showIcon = true }: { showIcon?: boolean }) {
   return (
