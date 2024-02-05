@@ -39,7 +39,7 @@ export default function NavBar() {
 
   return (
     <nav
-      className={`shadow-md font-medium sticky top-0 bg-white w-full ${
+      className={`shadow-md font-medium sticky top-0 bg-white w-full z-20 ${
         isMobile && isOpen ? "h-screen" : ""
       }`}
     >

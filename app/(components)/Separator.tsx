@@ -6,7 +6,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { arrowAnim } from "../(framer-motion)/arrowAnim";
 
-export default function Separator() {
+export default function Separator({ showIcon = true }: { showIcon?: boolean }) {
   return (
     <motion.div
       className="flex justify-center py-4 mb-24 mt-4"
@@ -14,7 +14,7 @@ export default function Separator() {
       initial={arrowAnim.hidden}
       animate={arrowAnim.visible}
     >
-      <FontAwesomeIcon icon={faAnglesDown} size={"2x"} />
+      {showIcon ? <FontAwesomeIcon icon={faAnglesDown} size={"2x"} /> : null}
     </motion.div>
   );
 }
