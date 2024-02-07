@@ -4,6 +4,7 @@ import Hero from "./(components)/hero/Hero";
 import Musicoterapia from "./(components)/musicoterapia/Musicoterapia";
 import NavBar from "./(components)/navBar/NavBar";
 import Introduction from "./(components)/introduction/Introduction";
+import Services from "./(components)/services/Services";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       </Banner>
       <Musicoterapia />
       <Introduction />
+      <Services />
     </>
   );
 }
