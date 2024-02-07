@@ -5,6 +5,7 @@ import Musicoterapia from "./(components)/musicoterapia/Musicoterapia";
 import NavBar from "./(components)/navBar/NavBar";
 import Introduction from "./(components)/introduction/Introduction";
 import Services from "./(components)/services/Services";
+import Partners from "./(components)/partners/Partners";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
       <Musicoterapia />
       <Introduction />
       <Services />
+      <Partners />
     </>
   );
 }
