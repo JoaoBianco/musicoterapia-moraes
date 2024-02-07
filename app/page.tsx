@@ -17,7 +17,12 @@ export default function Home() {
         backgroundImage="img/banner_2.jpg"
         darker={true}
       >
-        <Button size="small" text="Averígualo" />
+        <Button
+          isAnchor={true}
+          anchorId="musicoterapia"
+          size="small"
+          text="Averígualo"
+        />
       </Banner>
       <Musicoterapia />
       <Introduction />

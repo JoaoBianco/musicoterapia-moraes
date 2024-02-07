@@ -5,6 +5,7 @@ import Wrapper from "../shared/Wrapper";
 import Card from "../shared/Card";
 import Image from "next/image";
 import Separator from "../shared/Separator";
+import Button from "../shared/Button";
 
 export default function Services() {
   const [cardRotate, setCardRotate] = useState([
@@ -79,8 +80,17 @@ export default function Services() {
             );
           })}
         </div>
+        <div className="w-full flex justify-center mt-12">
+          <Button
+            customClass="max-w-[820px] text-sm md:text-2xl"
+            width="full"
+            size="big"
+            text="entrar en contato"
+            isAnchor={true}
+            anchorId="contacto"
+          ></Button>
+        </div>
       </Wrapper>
-      <Separator />
     </section>
   );
 }
