@@ -7,6 +7,7 @@ import Introduction from "./(components)/introduction/Introduction";
 import Services from "./(components)/services/Services";
 import Partners from "./(components)/partners/Partners";
 import Review from "./(components)/review/Review";
+import Map from "./(components)/map/Map";
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
       <Services />
       <Partners />
       <Review />
+      <Map />
     </>
   );
 }
