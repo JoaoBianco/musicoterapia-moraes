@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <>
       <div className="bg-custom-red-500 custom-clippath min-h-[80vh] grid place-content-center">
-        <Wrapper customClass="py-8 flex gap-4 justify-center align-center">
+        <Wrapper childrenClass="py-8 flex gap-4 justify-center align-center">
           <div className="text-white flex flex-col gap-8 justify-center align-start">
             <Image
               src={"/assets/mm_marca-2.png"}

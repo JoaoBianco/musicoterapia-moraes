@@ -5,11 +5,13 @@ export default function Wrapper({
   customClass,
   title,
   noSpace = false,
+  childrenClass,
 }: Readonly<{
   children: React.ReactNode;
   customClass?: string;
   title?: string;
   noSpace?: boolean;
+  childrenClass?: string;
 }>) {
   return (
     <div
@@ -22,7 +24,7 @@ export default function Wrapper({
           {title}
         </h2>
       ) : null}
-      {children}
+      <div className={childrenClass}>{children}</div>
     </div>
   );
 }

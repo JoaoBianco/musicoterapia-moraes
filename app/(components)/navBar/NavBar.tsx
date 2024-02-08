@@ -43,7 +43,7 @@ export default function NavBar() {
         isMobile && isOpen ? "h-screen" : ""
       }`}
     >
-      <Wrapper customClass="flex py-3 items-center">
+      <Wrapper childrenClass="flex py-3 items-center">
         {!isMobile ? (
           <motion.h2
             variants={showItems()}

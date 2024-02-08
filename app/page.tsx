@@ -6,6 +6,7 @@ import NavBar from "./(components)/navBar/NavBar";
 import Introduction from "./(components)/introduction/Introduction";
 import Services from "./(components)/services/Services";
 import Partners from "./(components)/partners/Partners";
+import Review from "./(components)/review/Review";
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
       <Introduction />
       <Services />
       <Partners />
+      <Review />
     </>
   );
 }
