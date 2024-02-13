@@ -12,7 +12,7 @@ import Map from "./(components)/map/Map";
 export default function Home() {
   return (
     <>
-      <NavBar />
+      {/* <NavBar />
       <Hero />
       <Banner
         title="Musica, Terapia & Movimiento"
@@ -31,7 +31,7 @@ export default function Home() {
       <Introduction />
       <Services />
       <Partners />
-      <Review />
+      <Review /> */}
       <Map />
     </>
   );
