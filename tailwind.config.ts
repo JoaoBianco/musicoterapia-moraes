@@ -24,6 +24,7 @@ const config: Config = {
     },
     boxShadow: {
       "box-shadow-card": "inset 4px 4px 10px #545454",
+      "box-shadow-navbar": "0px 2px 4px rgba(39, 39, 39, 0.25)",
     },
   },
   plugins: [],

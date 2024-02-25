@@ -6,12 +6,21 @@ import "leaflet/dist/leaflet.css";
 import Separator from "../shared/Separator";
 import MapMarkersContainer from "./MapMarkersContainer";
 import { MapMarkerType } from "@/app/(types)/types";
+import L from "leaflet";
 
 export default function Map() {
   const [activePosition, setActivePosition] = useState<[number, number]>([
     43.364470559967046, -5.836087695316612,
   ]);
 
+  const icon = L.icon({
+    iconUrl: "/img/leaflet/marker-icon-2x.png",
+    shadowUrl: "/img/leaflet/marker-shadow.png",
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41],
+  });
   const positions: Array<MapMarkerType> = [
     { label: "Test1", coords: [43.364470559967046, -5.836087695316612] },
     { label: "Test2", coords: [43.53819481149433, -5.699539810953275] },
@@ -51,7 +60,7 @@ export default function Map() {
           />
           {positions.map((pos, index) => {
             return (
-              <Marker position={pos.coords} key={index}>
+              <Marker position={pos.coords} key={index} icon={icon}>
                 <Popup>{pos.label}</Popup>
               </Marker>
             );

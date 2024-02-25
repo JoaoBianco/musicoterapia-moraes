@@ -7,7 +7,11 @@ import Introduction from "./(components)/introduction/Introduction";
 import Services from "./(components)/services/Services";
 import Partners from "./(components)/partners/Partners";
 import Review from "./(components)/review/Review";
-import Map from "./(components)/map/Map";
+import dynamic from "next/dynamic";
+
+const MapWithNoSSR = dynamic(() => import("./(components)/map/Map"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
@@ -32,7 +36,7 @@ export default function Home() {
       <Services />
       <Partners />
       <Review />
-      <Map />
+      <MapWithNoSSR />
     </>
   );
 }
