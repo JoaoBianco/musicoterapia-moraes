@@ -19,7 +19,7 @@ export default function MapMarker({
     <div
       className={`${showBorder ? "border-x-2 border-white" : ""} ${
         isActive ? "bg-custom-red-500" : ""
-      } relative flex items-center justify-center flex-1 hover:bg-custom-red-500 text-white transition-all duration-300`}
+      } relative flex items-center justify-center flex-1 hover:bg-custom-red-500 text-white transition-all duration-300 `}
     >
       {isActive ? (
         <FontAwesomeIcon
@@ -29,7 +29,7 @@ export default function MapMarker({
       ) : null}
       <p
         onClick={() => setActivePosition(position.coords)}
-        className="p-12 cursor-pointer"
+        className="p-8 md:p-12 cursor-pointer"
       >
         {position.label}
       </p>

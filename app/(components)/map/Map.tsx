@@ -72,6 +72,7 @@ export default function Map() {
           setActivePosition={setActivePosition}
         />
       </Wrapper>
+      <Separator showIcon={false} />
     </>
   );
 }

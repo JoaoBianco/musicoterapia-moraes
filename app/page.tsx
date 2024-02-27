@@ -8,6 +8,7 @@ import Services from "./(components)/services/Services";
 import Partners from "./(components)/partners/Partners";
 import Review from "./(components)/review/Review";
 import dynamic from "next/dynamic";
+import Contact from "./(components)/contact/Contact";
 
 const MapWithNoSSR = dynamic(() => import("./(components)/map/Map"), {
   ssr: false,
@@ -37,6 +38,7 @@ export default function Home() {
       <Partners />
       <Review />
       <MapWithNoSSR />
+      <Contact />
     </>
   );
 }

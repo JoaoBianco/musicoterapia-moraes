@@ -19,7 +19,7 @@ export default function MapMarkersContainer({
       : false;
   }
   return (
-    <div className="absolute -bottom-12 left-[50%] -translate-x-[50%] bg-custom-red-400 z-[5] max-w-[250px] md:max-w-[600px]">
+    <div className="absolute -bottom-12 left-[50%] -translate-x-[50%] bg-custom-red-400 z-[5] max-w-[350px] md:max-w-[600px]">
       <div className="flex">
         {positions.map((pos, index) => {
           return (
