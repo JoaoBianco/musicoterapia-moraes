@@ -26,8 +26,6 @@ export async function POST(req: Request) {
     text: data.message,
   };
 
-  return new NextResponse("Email sent", { status: 200 });
-
   transporter.sendMail(mailData, function (err: any, info: any) {
     if (err) {
       return new NextResponse(err.toString(), { status: 500 });

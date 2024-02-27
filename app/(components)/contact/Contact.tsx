@@ -18,7 +18,11 @@ export default function Contact() {
   const [message, setMessage] = useState("");
 
   async function sendEmail(e: React.FormEvent<HTMLFormElement>) {
-    const url = "http://localhost:3000/email";
+    const env = process.env.NODE_ENV;
+    const url =
+      env === "development"
+        ? "http://localhost:3000/email"
+        : "https://musicoterapia-moraes.vercel.app/email";
     e.preventDefault();
     if (!name || !email || !subject || !message)
       return toast("Por favor, rellene todos los campos", {
