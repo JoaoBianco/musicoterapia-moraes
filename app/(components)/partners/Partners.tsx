@@ -35,7 +35,7 @@ export default function Partners() {
   return (
     <>
       <Separator showIcon={false} />
-      <Wrapper title="centros asociados">
+      <Wrapper title="centros asociados" id="asociados">
         <div className="flex flex-col md:flex-row gap-6 items-center">
           {imagesToRender.map((img) => {
             return (

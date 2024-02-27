@@ -5,6 +5,7 @@
 html {
   --scroll-behavior: smooth !important;
   scroll-behavior: smooth !important;
+  scroll-padding-top: 46px;
 }
 
 button:focus,

@@ -47,50 +47,48 @@ export default function Services() {
   }
 
   return (
-    <section id="servicios">
-      <Wrapper title="que hacemos">
-        <div className="card-rotate-perspective flex md:flex-row flex-col gap-12 justify-between min-h-96">
-          {cardsToRender.map((card, index) => {
-            return (
-              <Card
-                key={index}
-                customClass={`flex items-center justify-center text-center bg-white-snow cursor-pointer custom-card-rotate flex-1 min-h-[400px] ${
-                  cardRotate[index].rotate === true ? "rotate-x-180" : ""
+    <Wrapper title="que hacemos" id="servicios">
+      <div className="card-rotate-perspective flex md:flex-row flex-col gap-12 justify-between min-h-96">
+        {cardsToRender.map((card, index) => {
+          return (
+            <Card
+              key={index}
+              customClass={`flex items-center justify-center text-center bg-white-snow cursor-pointer custom-card-rotate flex-1 min-h-[400px] ${
+                cardRotate[index].rotate === true ? "rotate-x-180" : ""
+              }`}
+              onClick={() => changeCardRotate(index + 1)}
+            >
+              <div
+                className={`flex flex-col justify-center gap-6 items-center card-rotate inner-card-front  ${
+                  cardRotate[index].rotate === true ? "hidden" : ""
                 }`}
-                onClick={() => changeCardRotate(index + 1)}
               >
-                <div
-                  className={`flex flex-col justify-center gap-6 items-center card-rotate inner-card-front  ${
-                    cardRotate[index].rotate === true ? "hidden" : ""
-                  }`}
-                >
-                  <Image src={card.img} alt="" width={80} height={80} />
-                  <h3 className="text-custom-blue-500 text-3xl font-bold">
-                    {card.title}
-                  </h3>
-                </div>
-                <div
-                  className={`card-rotate inner-card-back text-start text-custom-blue-500 ${
-                    cardRotate[index].rotate === true ? "" : "hidden"
-                  }`}
-                >
-                  <p>{card.description}</p>
-                </div>
-              </Card>
-            );
-          })}
-        </div>
-        <div className="w-full flex justify-center mt-12">
-          <Button
-            customClass="max-w-[820px] text-sm md:text-2xl"
-            width="full"
-            size="big"
-            text="entrar en contato"
-            isAnchor={true}
-            anchorId="contacto"
-          ></Button>
-        </div>
-      </Wrapper>
-    </section>
+                <Image src={card.img} alt="" width={80} height={80} />
+                <h3 className="text-custom-blue-500 text-3xl font-bold">
+                  {card.title}
+                </h3>
+              </div>
+              <div
+                className={`card-rotate inner-card-back text-start text-custom-blue-500 ${
+                  cardRotate[index].rotate === true ? "" : "hidden"
+                }`}
+              >
+                <p>{card.description}</p>
+              </div>
+            </Card>
+          );
+        })}
+      </div>
+      <div className="w-full flex justify-center mt-12">
+        <Button
+          customClass="max-w-[820px] text-sm md:text-2xl"
+          width="full"
+          size="big"
+          text="entrar en contato"
+          isAnchor={true}
+          anchorId="contacto"
+        ></Button>
+      </div>
+    </Wrapper>
   );
 }

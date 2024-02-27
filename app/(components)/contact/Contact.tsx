@@ -29,7 +29,7 @@ export default function Contact() {
   }
 
   return (
-    <Wrapper title="Contacto">
+    <Wrapper title="Contacto" id="contacto">
       <div className="flex flex-col md:flex-row justify-between gap-32 md:gap-4">
         <form
           onSubmit={sendEmail}

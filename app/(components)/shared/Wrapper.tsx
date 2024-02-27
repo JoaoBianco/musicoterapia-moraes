@@ -6,15 +6,18 @@ export default function Wrapper({
   title,
   noSpace = false,
   childrenClass,
+  id,
 }: Readonly<{
   children: React.ReactNode;
   customClass?: string;
   title?: string;
   noSpace?: boolean;
   childrenClass?: string;
+  id?: string;
 }>) {
   return (
-    <div
+    <section
+      id={id}
       className={`max-w-[1600px] m-auto ${noSpace ? "max-w-full" : "px-12"} ${
         customClass || ""
       }`}
@@ -25,6 +28,6 @@ export default function Wrapper({
         </h2>
       ) : null}
       <div className={childrenClass || ""}>{children}</div>
-    </div>
+    </section>
   );
 }

@@ -18,10 +18,11 @@ export default function Review() {
   ];
 
   return (
-    <section id="opiniones">
+    <>
       <Separator showIcon={false} />
       <Banner backgroundImage="img/background_music_2.jpg">
         <Wrapper
+          id="opiniones"
           title="opiniones"
           childrenClass="flex md:flex-row flex-col gap-16"
         >
@@ -42,6 +43,6 @@ export default function Review() {
         </Wrapper>
         <Separator showIcon={false} />
       </Banner>
-    </section>
+    </>
   );
 }

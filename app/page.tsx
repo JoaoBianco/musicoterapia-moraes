@@ -9,6 +9,7 @@ import Partners from "./(components)/partners/Partners";
 import Review from "./(components)/review/Review";
 import dynamic from "next/dynamic";
 import Contact from "./(components)/contact/Contact";
+import MusicoterapiaBanner from "./(components)/musicoterapiaBanner/MusicoterapiaBanner";
 
 const MapWithNoSSR = dynamic(() => import("./(components)/map/Map"), {
   ssr: false,
@@ -39,6 +40,7 @@ export default function Home() {
       <Review />
       <MapWithNoSSR />
       <Contact />
+      <MusicoterapiaBanner />
     </>
   );
 }

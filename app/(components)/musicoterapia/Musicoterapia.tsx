@@ -4,9 +4,9 @@ import Separator from "../shared/Separator";
 
 export default function Musicoterapia() {
   return (
-    <section id="musicoterapia">
+    <>
       <Separator showIcon={false} />
-      <Wrapper title="Musicoterapia" noSpace={true}>
+      <Wrapper title="Musicoterapia" noSpace={true} id="musicoterapia">
         <div
           style={{ backgroundImage: "url('/img/diagonal-background.jpg')" }}
           className="p-12 py-32 grid place-content-center bg-cover bg-center relative clippath-musico"
@@ -39,6 +39,6 @@ export default function Musicoterapia() {
         </div>
       </Wrapper>
       <Separator />
-    </section>
+    </>
   );
 }

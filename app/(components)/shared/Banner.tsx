@@ -6,6 +6,7 @@ type Props = {
   title?: string;
   text?: string;
   darker?: boolean;
+  customClass?: string;
 };
 
 export default function Banner({
@@ -14,11 +15,14 @@ export default function Banner({
   title,
   text,
   darker,
+  customClass,
 }: Props) {
   return (
     <div
       style={{ backgroundImage: `url('/${backgroundImage}')` }}
-      className="min-h-[36vh] bg-cover bg-center flex justify-center items-center relative"
+      className={`min-h-[36vh] bg-cover bg-no-repeat bg-center flex justify-center items-center relative ${
+        customClass || ""
+      }`}
     >
       {darker ? (
         <div className="bg-black bg-opacity-40 absolute inset-0 isolate"></div>

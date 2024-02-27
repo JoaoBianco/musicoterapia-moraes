@@ -43,6 +43,7 @@ export default function Map() {
     <>
       <Separator showIcon={false} />
       <Wrapper
+        id="localizacion"
         noSpace={true}
         title="DONDE ESTAMOS"
         customClass="relative z-[1]"
