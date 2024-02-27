@@ -9,6 +9,7 @@ import {
   faSquareInstagram,
   faSquareWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
+import { toast } from "react-toastify";
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -16,8 +17,34 @@ export default function Contact() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
 
-  function sendEmail(e: React.FormEvent<HTMLFormElement>) {
+  async function sendEmail(e: React.FormEvent<HTMLFormElement>) {
+    const url = "http://localhost:3000/email";
     e.preventDefault();
+    if (!name || !email || !subject || !message)
+      return toast("Por favor, rellene todos los campos", {
+        type: "error",
+        autoClose: 2000,
+      });
+    toast("Enviando mensaje...", { type: "info", autoClose: 2000 });
+    fetch(url, {
+      body: JSON.stringify({ name, email, subject, message }),
+      method: "POST",
+    })
+      .then((res) => {
+        if (res.ok) {
+          setTimeout(() => {
+            toast("Mensaje enviado", { type: "success", autoClose: 2000 });
+          }, 1000);
+        }
+      })
+      .catch((err) => {
+        setTimeout(() => {
+          toast("Error al enviar el mensaje", {
+            type: "error",
+            autoClose: 2000,
+          });
+        }, 1000);
+      });
     clearFields();
   }
 

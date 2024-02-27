@@ -10,6 +10,8 @@ import Review from "./(components)/review/Review";
 import dynamic from "next/dynamic";
 import Contact from "./(components)/contact/Contact";
 import MusicoterapiaBanner from "./(components)/musicoterapiaBanner/MusicoterapiaBanner";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MapWithNoSSR = dynamic(() => import("./(components)/map/Map"), {
   ssr: false,
@@ -18,6 +20,7 @@ const MapWithNoSSR = dynamic(() => import("./(components)/map/Map"), {
 export default function Home() {
   return (
     <>
+      <ToastContainer />
       <NavBar />
       <Hero />
       <Banner
