@@ -20,16 +20,17 @@ export async function POST(req: Request) {
 
   const mailData = {
     from: process.env.EMAIL,
-    // to: process.env.SEND_TO_EMAIL,
-    to: "joaops.bianco@gmail.com",
+    to: process.env.SEND_TO_EMAIL,
     subject: `Assunto: ${data.subject} - Email de: ${data.email}`,
     text: data.message,
   };
 
   transporter.sendMail(mailData, function (err: any, info: any) {
     if (err) {
+      console.log(err);
       return new NextResponse(err.toString(), { status: 500 });
     } else {
+      console.log(info);
       return new NextResponse(info.toString(), { status: 200 });
     }
   });
