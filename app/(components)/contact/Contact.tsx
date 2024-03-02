@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useRef, useState } from "react"
+import emailjs from "@emailjs/browser"
 import Wrapper from "../shared/Wrapper"
 import Separator from "../shared/Separator"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -23,6 +24,7 @@ export default function Contact() {
   const [token, setToken] = useState("")
   const [showAllPrivacityText, setShowAllPrivacityText] = useState(false)
   const captchaRef = useRef(null)
+  const formRef = useRef<any>(null)
 
   const key = process.env.NEXT_PUBLIC_HCAPTCHA_SECRET_KEY as string
 
@@ -43,25 +45,31 @@ export default function Contact() {
       })
     }
     toast("Enviando mensaje...", { type: "info", autoClose: 2000 })
-    fetch(url, {
-      body: JSON.stringify({ name, email, subject, message }),
-      method: "POST",
-    })
-      .then((res) => {
-        if (res.ok) {
+
+    emailjs
+      .sendForm(
+        process.env.NEXT_PUBLIC_SERVICE as string,
+        process.env.NEXT_PUBLIC_TEMPLATE as string,
+        formRef.current!,
+        process.env.NEXT_PUBLIC_PUBLIC_KEY as string
+      )
+      .then(
+        () => {
           setTimeout(() => {
             toast("Mensaje enviado", { type: "success", autoClose: 2000 })
           }, 1000)
+          //@ts-ignore
+          captchaRef.current?.resetCaptcha()
+        },
+        () => {
+          setTimeout(() => {
+            toast("Error al enviar el mensaje", {
+              type: "error",
+              autoClose: 2000,
+            })
+          }, 1000)
         }
-      })
-      .catch((err) => {
-        setTimeout(() => {
-          toast("Error al enviar el mensaje", {
-            type: "error",
-            autoClose: 2000,
-          })
-        }, 1000)
-      })
+      )
     clearFields()
   }
 
@@ -86,6 +94,7 @@ export default function Contact() {
     <Wrapper title="Contacto" id="contacto">
       <div className="flex flex-col md:flex-row justify-between gap-32 md:gap-4">
         <form
+          ref={formRef}
           onSubmit={sendEmail}
           className="flex flex-col flex-1 gap-4 bg-custom-blue-500 p-4 shadow-lg max-w-[600px]"
         >
