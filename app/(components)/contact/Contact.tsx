@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React, { useRef, useState } from "react"
 import Wrapper from "../shared/Wrapper"
 import Separator from "../shared/Separator"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -10,7 +10,7 @@ import {
   faSquareWhatsapp,
 } from "@fortawesome/free-brands-svg-icons"
 import { toast } from "react-toastify"
-import ReactCaptcha from "modern-react-captcha"
+import HCaptcha from "@hcaptcha/react-hcaptcha"
 
 export default function Contact() {
   const [name, setName] = useState("")
@@ -18,7 +18,10 @@ export default function Contact() {
   const [subject, setSubject] = useState("")
   const [message, setMessage] = useState("")
   const [disabled, setDisabled] = useState(true)
-  const [renderCaptcha, setRenderCaptcha] = useState(true)
+  const [token, setToken] = useState("")
+  const captchaRef = useRef(null)
+
+  const key = process.env.NEXT_PUBLIC_HCAPTCHA_SECRET_KEY as string
 
   async function sendEmail(e: React.FormEvent<HTMLFormElement>) {
     const env = process.env.NODE_ENV
@@ -27,11 +30,7 @@ export default function Contact() {
         ? "http://localhost:3000/email"
         : "https://musicoterapia-moraes.vercel.app/email"
     e.preventDefault()
-    setRenderCaptcha(false)
-    setTimeout(() => {
-      setRenderCaptcha(true)
-    }, 1)
-    if (!name || !email || !subject || !message) {
+    if (!name || !email || !subject || !message || !token) {
       setDisabled(true)
       return toast("Por favor, rellene todos los campos", {
         type: "error",
@@ -66,28 +65,17 @@ export default function Contact() {
     setEmail("")
     setSubject("")
     setMessage("")
-    const placeholderText = document.querySelector(
-      ".modern-react-captcha__inputField"
-    )
-    if (placeholderText) {
-      placeholderText.innerHTML = ""
+    setDisabled(true)
+    //@ts-ignore
+    captchaRef.current.resetCaptcha()
+  }
+
+  function verifyToken(token: string, ekey: string) {
+    if (token) {
+      setToken(token)
+      setDisabled(false)
     }
-    setDisabled(true)
   }
-
-  const handleSuccess = () => {
-    setDisabled(false)
-  }
-  const handleFailure = () => {
-    setDisabled(true)
-  }
-
-  useEffect(() => {
-    const placeholderText = document.querySelector(
-      ".modern-react-captcha__inputField"
-    )
-    placeholderText?.setAttribute("placeholder", "Introduce el captcha")
-  })
 
   return (
     <Wrapper title="Contacto" id="contacto">
@@ -135,22 +123,11 @@ export default function Contact() {
               name="message"
             />
           </div>
-          <div className="flex md:flex-row flex-col justify-between relative items-start">
-            {renderCaptcha ? (
-              <ReactCaptcha
-                charset="lns"
-                length={6}
-                color="black"
-                bgColor="white"
-                reload={true}
-                reloadText="Recargar"
-                handleSuccess={handleSuccess}
-                handleFailure={handleFailure}
-              />
-            ) : null}
+          <div className="flex md:flex-row flex-col justify-between items-center">
+            <HCaptcha sitekey={key} onVerify={verifyToken} ref={captchaRef} />
             <button
               disabled={disabled}
-              className="text-sm bg-white text-black self-end px-6 py-4 mt-2 md:mt-0 shadow-md font-semibold my-auto disabled:opacity-50 disabled:cursor-not-allowed"
+              className="text-sm bg-white text-black self-end px-6 py-4 mt-2 md:mt-0 shadow-md font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Enviar
             </button>
