@@ -1,6 +1,6 @@
-import React from "react";
-import Wrapper from "../shared/Wrapper";
-import Separator from "../shared/Separator";
+import React from "react"
+import Wrapper from "../shared/Wrapper"
+import Separator from "../shared/Separator"
 
 export default function Musicoterapia() {
   return (
@@ -11,7 +11,7 @@ export default function Musicoterapia() {
           style={{ backgroundImage: "url('/img/diagonal-background.jpg')" }}
           className="p-12 py-32 grid place-content-center bg-cover bg-center relative clippath-musico"
         >
-          <div className="bg-black bg-opacity-40 absolute inset-0 isolate"></div>
+          <div className="bg-black bg-opacity-55 md:bg-opacity-40 absolute inset-0 isolate"></div>
           <p className="text-white max-w-[800px] leading-8 z-10 text-xl drop-shadow-md my-10">
             Musicoterapia es una propuesta terapéutica desarrollada desde el
             inicio del siglo XX en los EEUU, algunos países de Sudamérica como
@@ -40,5 +40,5 @@ export default function Musicoterapia() {
       </Wrapper>
       <Separator />
     </>
-  );
+  )
 }

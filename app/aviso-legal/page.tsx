@@ -1,8 +1,12 @@
-"use client";
+"use client"
 
-import React from "react";
-import PdfDocument from "../(components)/shared/PdfDocument";
+import React, { Suspense } from "react"
+import PdfDocument from "../(components)/shared/PdfDocument"
 
 export default function page() {
-  return <PdfDocument pdf="aviso-legal" />;
+  return (
+    <Suspense>
+      <PdfDocument pdf="./pdf/aviso-legal" />
+    </Suspense>
+  )
 }

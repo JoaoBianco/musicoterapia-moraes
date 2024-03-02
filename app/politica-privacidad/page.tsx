@@ -1,6 +1,10 @@
-import React from "react";
-import PdfDocument from "../(components)/shared/PdfDocument";
+import React, { Suspense } from "react"
+import PdfDocument from "../(components)/shared/PdfDocument"
 
 export default function page() {
-  return <PdfDocument pdf="politica-privacidad" />;
+  return (
+    <Suspense>
+      <PdfDocument pdf="./pdf/politica-privacidad" />{" "}
+    </Suspense>
+  )
 }

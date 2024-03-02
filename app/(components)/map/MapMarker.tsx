@@ -19,7 +19,7 @@ export default function MapMarker({
     <div
       className={`${showBorder ? "border-x-2 border-white" : ""} ${
         isActive ? "bg-custom-red-500" : ""
-      } relative flex items-center justify-center flex-1 hover:bg-custom-red-500 text-white transition-all duration-300 `}
+      } min-w-[120px] md:min-w-0 relative flex items-center justify-center flex-1 hover:bg-custom-red-500 text-white transition-all duration-300 `}
     >
       {isActive ? (
         <FontAwesomeIcon

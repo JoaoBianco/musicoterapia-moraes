@@ -11,6 +11,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons"
 import { toast } from "react-toastify"
 import HCaptcha from "@hcaptcha/react-hcaptcha"
+import Link from "next/link"
+import { faUpDown } from "@fortawesome/free-solid-svg-icons"
 
 export default function Contact() {
   const [name, setName] = useState("")
@@ -19,6 +21,7 @@ export default function Contact() {
   const [message, setMessage] = useState("")
   const [disabled, setDisabled] = useState(true)
   const [token, setToken] = useState("")
+  const [showAllPrivacityText, setShowAllPrivacityText] = useState(false)
   const captchaRef = useRef(null)
 
   const key = process.env.NEXT_PUBLIC_HCAPTCHA_SECRET_KEY as string
@@ -32,6 +35,8 @@ export default function Contact() {
     e.preventDefault()
     if (!name || !email || !subject || !message || !token) {
       setDisabled(true)
+      //@ts-ignore
+      captchaRef.current.resetCaptcha()
       return toast("Por favor, rellene todos los campos", {
         type: "error",
         autoClose: 2000,
@@ -121,6 +126,41 @@ export default function Contact() {
               onChange={(e) => setMessage(e.target.value)}
               className="max-h-44 min-h-16 text-black p-4"
               name="message"
+            />
+          </div>
+          <div className="relative">
+            <p
+              className={`text-sm text-white leading-4 ${
+                showAllPrivacityText ? "" : "custom-ellipsis"
+              }`}
+            >
+              <span
+                className="cursor-pointer"
+                onClick={() => setShowAllPrivacityText(!showAllPrivacityText)}
+              >
+                De acuerdo a lo establecido en la legislación vigente en materia
+                de Protección de Datos de Carácter Personal, Reglamento 2016/679
+                General de Protección de Datos (RGPD) y la Ley Orgánica 3/2018
+                de 5 de diciembre, de protección de datos de carácter personal y
+                garantía de los derechos digitales (LOPDGDD), se le informa que
+                los datos personales que nos facilite a través de dicho
+                formulario serán tratados por ALINE CRISTINA SILVA MORAES, con
+                la finalidad de gestionar su solicitud y enviarle información
+                más detallada. Para más información consultar la{" "}
+              </span>
+              <Link
+                className="underline"
+                target="_blank"
+                href="./politica-privacidad"
+              >
+                política de privacidad
+              </Link>
+              .
+            </p>
+            <FontAwesomeIcon
+              onClick={() => setShowAllPrivacityText(!showAllPrivacityText)}
+              className="absolute right-0 bottom-[40%] text-white cursor-pointer"
+              icon={faUpDown}
             />
           </div>
           <div className="flex md:flex-row flex-col justify-between items-center">

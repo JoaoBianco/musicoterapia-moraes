@@ -1,12 +1,12 @@
-import Image from "next/image";
-import React from "react";
-import Wrapper from "../shared/Wrapper";
-import Separator from "../shared/Separator";
+import Image from "next/image"
+import React from "react"
+import Wrapper from "../shared/Wrapper"
+import Separator from "../shared/Separator"
 
 export default function Hero() {
   return (
     <>
-      <div className="bg-custom-red-500 custom-clippath min-h-[80vh] grid place-content-center">
+      <div className="bg-custom-red-500 custom-clippath min-h-[400px] md:min-h-[80vh] grid place-content-center">
         <Wrapper
           id="#"
           childrenClass="py-8 flex gap-4 justify-center align-center"
@@ -37,5 +37,5 @@ export default function Hero() {
       </div>
       <Separator />
     </>
-  );
+  )
 }

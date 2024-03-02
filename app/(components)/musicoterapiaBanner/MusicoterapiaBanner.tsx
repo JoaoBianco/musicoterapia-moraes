@@ -1,6 +1,7 @@
 import React from "react"
 import Banner from "../shared/Banner"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function MusicoterapiaBanner() {
   return (
@@ -13,14 +14,23 @@ export default function MusicoterapiaBanner() {
         alt="Musicoterapia Moraes"
       />
       <div className="flex items-center justify-center text-white text-sm font-semibold bg-custom-blue-400">
-        Developed with 💙 by{" "}
-        <a
-          className="ml-1"
-          href="https://www.joaopsbianco.com/"
+        <span className="ml-auto">
+          Developed with 💙 by{" "}
+          <Link
+            className="ml-1"
+            href="https://www.joaopsbianco.com/"
+            target="_blank"
+          >
+            João Bianco
+          </Link>
+        </span>
+        <Link
+          className="mr-4 ml-auto underline"
           target="_blank"
+          href="./aviso-legal"
         >
-          João Bianco
-        </a>
+          Aviso legal
+        </Link>
       </div>
     </div>
   )
