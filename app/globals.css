@@ -44,3 +44,27 @@ a:focus {
 .rotate-x-180 {
   transform: rotateX(180deg);
 }
+
+.modern-react-captcha {
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+
+.modern-react-captcha__inputField {
+  position: absolute;
+  top: 10%;
+  left: 150px;
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  .modern-react-captcha {
+    flex-direction: column;
+    align-items: start;
+  }
+  .modern-react-captcha__inputField {
+    position: relative;
+    left: 0;
+  }
+}

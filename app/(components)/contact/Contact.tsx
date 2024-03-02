@@ -1,35 +1,44 @@
-"use client";
+"use client"
 
-import React, { useState } from "react";
-import Wrapper from "../shared/Wrapper";
-import Separator from "../shared/Separator";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useState } from "react"
+import Wrapper from "../shared/Wrapper"
+import Separator from "../shared/Separator"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faSquareFacebook,
   faSquareInstagram,
   faSquareWhatsapp,
-} from "@fortawesome/free-brands-svg-icons";
-import { toast } from "react-toastify";
+} from "@fortawesome/free-brands-svg-icons"
+import { toast } from "react-toastify"
+import ReactCaptcha from "modern-react-captcha"
 
 export default function Contact() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [subject, setSubject] = useState("")
+  const [message, setMessage] = useState("")
+  const [disabled, setDisabled] = useState(true)
+  const [renderCaptcha, setRenderCaptcha] = useState(true)
 
   async function sendEmail(e: React.FormEvent<HTMLFormElement>) {
-    const env = process.env.NODE_ENV;
+    const env = process.env.NODE_ENV
     const url =
       env === "development"
         ? "http://localhost:3000/email"
-        : "https://musicoterapia-moraes.vercel.app/email";
-    e.preventDefault();
-    if (!name || !email || !subject || !message)
+        : "https://musicoterapia-moraes.vercel.app/email"
+    e.preventDefault()
+    setRenderCaptcha(false)
+    setTimeout(() => {
+      setRenderCaptcha(true)
+    }, 1)
+    if (!name || !email || !subject || !message) {
+      setDisabled(true)
       return toast("Por favor, rellene todos los campos", {
         type: "error",
         autoClose: 2000,
-      });
-    toast("Enviando mensaje...", { type: "info", autoClose: 2000 });
+      })
+    }
+    toast("Enviando mensaje...", { type: "info", autoClose: 2000 })
     fetch(url, {
       body: JSON.stringify({ name, email, subject, message }),
       method: "POST",
@@ -37,8 +46,8 @@ export default function Contact() {
       .then((res) => {
         if (res.ok) {
           setTimeout(() => {
-            toast("Mensaje enviado", { type: "success", autoClose: 2000 });
-          }, 1000);
+            toast("Mensaje enviado", { type: "success", autoClose: 2000 })
+          }, 1000)
         }
       })
       .catch((err) => {
@@ -46,18 +55,39 @@ export default function Contact() {
           toast("Error al enviar el mensaje", {
             type: "error",
             autoClose: 2000,
-          });
-        }, 1000);
-      });
-    clearFields();
+          })
+        }, 1000)
+      })
+    clearFields()
   }
 
   function clearFields() {
-    setName("");
-    setEmail("");
-    setSubject("");
-    setMessage("");
+    setName("")
+    setEmail("")
+    setSubject("")
+    setMessage("")
+    const placeholderText = document.querySelector(
+      ".modern-react-captcha__inputField"
+    )
+    if (placeholderText) {
+      placeholderText.innerHTML = ""
+    }
+    setDisabled(true)
   }
+
+  const handleSuccess = () => {
+    setDisabled(false)
+  }
+  const handleFailure = () => {
+    setDisabled(true)
+  }
+
+  useEffect(() => {
+    const placeholderText = document.querySelector(
+      ".modern-react-captcha__inputField"
+    )
+    placeholderText?.setAttribute("placeholder", "Introduce el captcha")
+  })
 
   return (
     <Wrapper title="Contacto" id="contacto">
@@ -105,14 +135,31 @@ export default function Contact() {
               name="message"
             />
           </div>
-          <button className="text-sm bg-white text-black self-end px-6 py-4 shadow-md font-semibold">
-            Enviar
-          </button>
+          <div className="flex md:flex-row flex-col justify-between relative items-start">
+            {renderCaptcha ? (
+              <ReactCaptcha
+                charset="lns"
+                length={6}
+                color="black"
+                bgColor="white"
+                reload={true}
+                reloadText="Recargar"
+                handleSuccess={handleSuccess}
+                handleFailure={handleFailure}
+              />
+            ) : null}
+            <button
+              disabled={disabled}
+              className="text-sm bg-white text-black self-end px-6 py-4 mt-2 md:mt-0 shadow-md font-semibold my-auto disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Enviar
+            </button>
+          </div>
         </form>
         <Wrapper
           customClass="px-0"
           title="TAMBIÉN ESTAMOS AQUÍ:"
-          childrenClass="flex gap-16 items-center justify-center"
+          childrenClass="flex gap-4 md:gap-16 items-center justify-center"
         >
           <a
             href="https://www.facebook.com/musicoterapiasturias/"
@@ -145,5 +192,5 @@ export default function Contact() {
       </div>
       <Separator showIcon={false}></Separator>
     </Wrapper>
-  );
+  )
 }

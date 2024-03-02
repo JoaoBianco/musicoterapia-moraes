@@ -1,8 +1,8 @@
-"use client";
-import { MapMarkerType } from "@/app/(types)/types";
-import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+"use client"
+import { MapMarkerType } from "@/app/(types)/types"
+import { faCaretUp } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import React from "react"
 
 export default function MapMarker({
   position,
@@ -10,10 +10,10 @@ export default function MapMarker({
   isActive = false,
   setActivePosition,
 }: {
-  position: MapMarkerType;
-  showBorder?: boolean;
-  isActive?: boolean;
-  setActivePosition: (coords: [number, number]) => void;
+  position: MapMarkerType
+  showBorder?: boolean
+  isActive?: boolean
+  setActivePosition: (coords: [number, number]) => void
 }) {
   return (
     <div
@@ -29,10 +29,10 @@ export default function MapMarker({
       ) : null}
       <p
         onClick={() => setActivePosition(position.coords)}
-        className="p-8 md:p-12 cursor-pointer"
+        className="p-4 md:p-4 cursor-pointer text-sm text-center"
       >
         {position.label}
       </p>
     </div>
-  );
+  )
 }

@@ -1,25 +1,26 @@
-import Banner from "./(components)/shared/Banner";
-import Button from "./(components)/shared/Button";
-import Hero from "./(components)/hero/Hero";
-import Musicoterapia from "./(components)/musicoterapia/Musicoterapia";
-import NavBar from "./(components)/navBar/NavBar";
-import Introduction from "./(components)/introduction/Introduction";
-import Services from "./(components)/services/Services";
-import Partners from "./(components)/partners/Partners";
-import Review from "./(components)/review/Review";
-import dynamic from "next/dynamic";
-import Contact from "./(components)/contact/Contact";
-import MusicoterapiaBanner from "./(components)/musicoterapiaBanner/MusicoterapiaBanner";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Banner from "./(components)/shared/Banner"
+import Button from "./(components)/shared/Button"
+import Hero from "./(components)/hero/Hero"
+import Musicoterapia from "./(components)/musicoterapia/Musicoterapia"
+import NavBar from "./(components)/navBar/NavBar"
+import Introduction from "./(components)/introduction/Introduction"
+import Services from "./(components)/services/Services"
+import Partners from "./(components)/partners/Partners"
+import Review from "./(components)/review/Review"
+import dynamic from "next/dynamic"
+import Contact from "./(components)/contact/Contact"
+import MusicoterapiaBanner from "./(components)/musicoterapiaBanner/MusicoterapiaBanner"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import { Suspense } from "react"
 
 const MapWithNoSSR = dynamic(() => import("./(components)/map/Map"), {
   ssr: false,
-});
+})
 
 export default function Home() {
   return (
-    <>
+    <Suspense>
       <ToastContainer />
       <NavBar />
       <Hero />
@@ -44,6 +45,6 @@ export default function Home() {
       <MapWithNoSSR />
       <Contact />
       <MusicoterapiaBanner />
-    </>
-  );
+    </Suspense>
+  )
 }
