@@ -33,9 +33,9 @@ export default function Map() {
       link: "https://www.google.com/maps/place/C.+Mar%C3%ADa+Zambrano,+9,+Gijon-Oeste,+33213+Gij%C3%B3n,+Asturias,+Spain/@43.5382096,-5.6996136,21z/data=!4m15!1m8!3m7!1s0xd367da61258fe25:0x5805669db9e2bcab!2sC.+Mar%C3%ADa+Zambrano,+9,+Gijon-Oeste,+33213+Gij%C3%B3n,+Asturias,+Spain!3b1!8m2!3d43.5380745!4d-5.6995244!16s%2Fg%2F11c5mbgxm4!3m5!1s0xd367da61258fe25:0x6eaa43deef48b434!8m2!3d43.5380745!4d-5.6995244!16s%2Fg%2F11q2nh4n7k?entry=ttu",
     },
     {
-      label: "Calle Rivero, 112, 33402 Avilés",
-      coords: [43.551550795247046, -5.919714318689684],
-      link: "https://www.google.com/maps/place/C.+Rivero,+112,+33402+Avil%C3%A9s,+Asturias,+Spain/@43.5515593,-5.9198434,21z/data=!4m6!3m5!1s0xd369b67ff4066b3:0xb52eaf382dbaadd9!8m2!3d43.551552!4d-5.9197149!16s%2Fg%2F11bw44fxv6?entry=ttu",
+      label: "C. Juan de Austria, 5, 33405 Raíces Nuevo",
+      coords: [43.5750881092545, -5.941595289096232],
+      link: "https://maps.app.goo.gl/hWx1bj953bQUAq7g9",
     },
   ]
 
